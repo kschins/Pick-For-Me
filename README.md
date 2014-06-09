@@ -1,4 +1,4 @@
-Pick-For-Me
+Pick For Me (Swift)
 ===================
 
 By Kasey Schindler - [@kschins](http://twitter.com/kschins)  
