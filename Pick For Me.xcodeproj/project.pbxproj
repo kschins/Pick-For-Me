@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F7774E619461AB3006789B6 /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7774E519461AB3006789B6 /* SelectedView.swift */; };
 		1F92FE201942386B009DAC70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92FE1F1942386B009DAC70 /* AppDelegate.swift */; };
 		1F92FE221942386B009DAC70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92FE211942386B009DAC70 /* ViewController.swift */; };
 		1F92FE251942386B009DAC70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F92FE231942386B009DAC70 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F7774E519461AB3006789B6 /* SelectedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
 		1F92FE1A1942386B009DAC70 /* Pick For Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick For Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F92FE1E1942386B009DAC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F92FE1F1942386B009DAC70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				1F92FE1F1942386B009DAC70 /* AppDelegate.swift */,
 				1F92FE211942386B009DAC70 /* ViewController.swift */,
+				1F7774E519461AB3006789B6 /* SelectedView.swift */,
 				1F92FE231942386B009DAC70 /* Main.storyboard */,
 				1F92FE261942386B009DAC70 /* Images.xcassets */,
 				1F92FE1D1942386B009DAC70 /* Supporting Files */,
@@ -158,6 +161,7 @@
 				TargetAttributes = {
 					1F92FE191942386B009DAC70 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = G9EHQST8C5;
 					};
 					1F92FE2B1942386B009DAC70 = {
 						CreatedOnToolsVersion = 6.0;
@@ -210,6 +214,7 @@
 			files = (
 				1F92FE221942386B009DAC70 /* ViewController.swift in Sources */,
 				1F92FE201942386B009DAC70 /* AppDelegate.swift in Sources */,
+				1F7774E619461AB3006789B6 /* SelectedView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +330,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pick For Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -336,9 +344,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pick For Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -397,6 +408,7 @@
 				1F92FE381942386B009DAC70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F92FE391942386B009DAC70 /* Build configuration list for PBXNativeTarget "Pick For MeTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +417,7 @@
 				1F92FE3B1942386B009DAC70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
