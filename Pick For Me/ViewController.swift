@@ -29,10 +29,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func addItem() {
-        var alertController = UIAlertController(title: "Add Option", message: nil, preferredStyle: .Alert)
+        var alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .Alert)
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Add", style: .Default, handler: {(action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .Default, handler: {(action: UIAlertAction!) in
             // get information from textfield
             let textfield = alertController.textFields[0] as UITextField
             self.addOption(textfield.text)
@@ -139,10 +139,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func editOptionAtRow(row: NSInteger) {
         editingOption = true
-        var alertController = UIAlertController(title: "Edit Option", message: nil, preferredStyle: .Alert)
+        var alertController = UIAlertController(title: NSLocalizedString("Edit Option", comment: ""), message: nil, preferredStyle: .Alert)
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Save", style: .Default, handler: {(action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment:""), style: .Default, handler: {(action: UIAlertAction!) in
             // get information from textfield
             let textfield = alertController.textFields[0] as UITextField
             
