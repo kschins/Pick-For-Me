@@ -21,11 +21,15 @@ class SelectedView: UIView {
         backgroundColor = backgroundColors[randomNumber]
         
         // add label based on size
-        var label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         label.text = labelString
         label.textColor = UIColor.blackColor()
         label.textAlignment = .Center
         label.font = UIFont(name: "Avenir-Heavy", size: 23)
         addSubview(label)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

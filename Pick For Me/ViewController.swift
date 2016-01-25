@@ -9,33 +9,33 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
     
-    @IBOutlet var tableView: UITableView
-    @IBOutlet var addButton: UIButton
-    @IBOutlet var resetButton: UIButton
-    @IBOutlet var selectButton: UIButton
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var selectButton: UIButton!
     
-    var items = String[]()
+    var items = [String]()
     var editingOption = false
     var editingOptionRow = 0;
     var selectedView: SelectedView
     let tapGesture = UITapGestureRecognizer()
     let kCellIdentifier: String = "Cell"
     
-    init(coder aDecoder: NSCoder!) {
+    required init?(coder aDecoder: NSCoder) {
         selectedView = SelectedView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), labelString: "")
         super.init(coder: aDecoder)
     }
     
     @IBAction func addItem() {
-        var alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .Default, handler: {(action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .Default, handler: {(action: UIAlertAction) in
             // get information from textfield
-            let textfield = alertController.textFields[0] as UITextField
-            self.addOption(textfield.text)
+            let textfield = alertController.textFields![0] as UITextField
+            self.addOption(textfield.text!)
             
             // this is called when "Return" is pressed too so dismiss alert controller
             alertController.dismissViewControllerAnimated(true, completion: nil)
@@ -58,12 +58,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func removeAllItems() {
         
-        var indexPaths: NSIndexPath[] = []
+        var indexPaths = [NSIndexPath]()
 
         var count = 0
         while count < items.count {
-            var indexPath = NSIndexPath(forRow: count, inSection: 0)
-            indexPaths += indexPath
+            let indexPath = NSIndexPath(forRow: count, inSection: 0)
+            indexPaths.append(indexPath)
             count++
         }
         
@@ -72,11 +72,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func pickRandomItem() {
-        var totalOptions = items.count
+        let totalOptions = items.count
         
         if totalOptions > 0 {
             let randomNumber = arc4random_uniform(UInt32(items.count)).hashValue
-            var selectedOption = items[randomNumber]
+            let selectedOption = items[randomNumber]
             removeAllItems()
             animationSelectedOptionOnScreen(selectedOption)
         }
@@ -125,8 +125,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func addOption(optionString: String) {
         items.append(optionString)
         
-        var row = items.count - 1
-        var indexPath = NSIndexPath(forRow: row, inSection: 0)
+        let row = items.count - 1
+        let indexPath = NSIndexPath(forRow: row, inSection: 0)
         
         if row % 2 == 0 {
             // even
@@ -142,14 +142,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var alertController = UIAlertController(title: NSLocalizedString("Edit Option", comment: ""), message: nil, preferredStyle: .Alert)
         
         alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment:""), style: .Default, handler: {(action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment:""), style: .Default, handler: {(action: UIAlertAction) in
             // get information from textfield
-            let textfield = alertController.textFields[0] as UITextField
+            let textfield = alertController.textFields![0] as UITextField
             
-            //if countElements(textfield.text) > 0 {
-                self.items[row] = textfield.text;
-                self.tableView.reloadData()
-            //}
+            self.items[row] = textfield.text!;
+            self.tableView.reloadData()
             
             // this is called when "Return" is pressed too so dismiss alert controller
             alertController.dismissViewControllerAnimated(true, completion: nil)
@@ -169,25 +167,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+}
+
+// MARK: - UITableView Delegate & Data Source
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!  {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier) as UITableViewCell
-        cell.textLabel.text = items[indexPath.row]
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier)! as UITableViewCell
+        cell.textLabel!.text = items[indexPath.row]
         
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.editOptionAtRow(indexPath.row)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
 }
 

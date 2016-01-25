@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F6A1A981C56DA28002058AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6A1A961C56DA28002058AE /* Launch Screen.storyboard */; };
 		1F7774E619461AB3006789B6 /* SelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7774E519461AB3006789B6 /* SelectedView.swift */; };
 		1F92FE201942386B009DAC70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92FE1F1942386B009DAC70 /* AppDelegate.swift */; };
 		1F92FE221942386B009DAC70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92FE211942386B009DAC70 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F6A1A971C56DA28002058AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1F7774E519461AB3006789B6 /* SelectedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedView.swift; sourceTree = "<group>"; };
 		1F92FE1A1942386B009DAC70 /* Pick For Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick For Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F92FE1E1942386B009DAC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				1F92FE231942386B009DAC70 /* Main.storyboard */,
 				1F92FE261942386B009DAC70 /* Images.xcassets */,
 				1F92FE1D1942386B009DAC70 /* Supporting Files */,
+				1F6A1A961C56DA28002058AE /* Launch Screen.storyboard */,
 			);
 			path = "Pick For Me";
 			sourceTree = "<group>";
@@ -156,7 +159,9 @@
 		1F92FE121942386B009DAC70 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Kasey Schindler";
 				TargetAttributes = {
 					1F92FE191942386B009DAC70 = {
@@ -193,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F6A1A981C56DA28002058AE /* Launch Screen.storyboard in Resources */,
 				1F92FE251942386B009DAC70 /* Main.storyboard in Resources */,
 				1F92FE271942386B009DAC70 /* Images.xcassets in Resources */,
 			);
@@ -237,6 +243,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1F6A1A961C56DA28002058AE /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F6A1A971C56DA28002058AE /* Base */,
+			);
+			name = "Launch Screen.storyboard";
+			sourceTree = "<group>";
+		};
 		1F92FE231942386B009DAC70 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -268,6 +282,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -334,6 +349,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pick For Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaseyschindler.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -348,6 +364,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pick For Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaseyschindler.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -368,6 +385,7 @@
 				INFOPLIST_FILE = "Pick For MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaseyschindler.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -384,6 +402,7 @@
 				INFOPLIST_FILE = "Pick For MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kaseyschindler.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
