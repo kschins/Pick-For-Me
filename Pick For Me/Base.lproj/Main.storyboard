@@ -1,62 +1,63 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Pick_For_Me" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xu6-BC-z3n">
-                                <rect key="frame" x="281" y="549" width="38" height="38"/>
+                                <rect key="frame" x="159" y="597" width="57" height="57"/>
                                 <state key="normal" image="refresh">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="pickRandomItem" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kHr-St-3LC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhu-cU-x7Q">
-                                <rect key="frame" x="542" y="549" width="38" height="38"/>
+                                <rect key="frame" x="298" y="597" width="57" height="57"/>
                                 <state key="normal" image="add">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addItem" destination="vXZ-lx-hvc" eventType="touchUpInside" id="c7L-VW-NAF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8p1-9H-UcD">
-                                <rect key="frame" x="20" y="549" width="38" height="38"/>
+                                <rect key="frame" x="20" y="597" width="57" height="57"/>
                                 <state key="normal" image="close">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="removeAllItems" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vah-co-7BV"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Tow-7c-YJr">
-                                <rect key="frame" x="0.0" y="20" width="600" height="521"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="569"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Nzw-sb-xlA" style="IBUITableViewCellStyleDefault" id="FkM-SP-JtZ">
-                                        <rect key="frame" x="0.0" y="22" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FkM-SP-JtZ" id="Cqt-Ie-s4k">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nzw-sb-xlA">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="60"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="23"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -72,19 +73,20 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8p1-9H-UcD" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="3v8-Zg-uhm"/>
+                            <constraint firstItem="8p1-9H-UcD" firstAttribute="leading" secondItem="ABx-yW-SZI" secondAttribute="leading" constant="20" id="3v8-Zg-uhm"/>
                             <constraint firstItem="8p1-9H-UcD" firstAttribute="top" secondItem="Tow-7c-YJr" secondAttribute="bottom" constant="8" id="6q8-KB-kJW"/>
-                            <constraint firstAttribute="centerX" secondItem="xu6-BC-z3n" secondAttribute="centerX" id="9RL-nN-mMP"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="8p1-9H-UcD" secondAttribute="bottom" constant="13" id="9gd-Sw-Csw"/>
+                            <constraint firstItem="ABx-yW-SZI" firstAttribute="centerX" secondItem="xu6-BC-z3n" secondAttribute="centerX" id="9RL-nN-mMP"/>
+                            <constraint firstItem="ABx-yW-SZI" firstAttribute="bottom" secondItem="8p1-9H-UcD" secondAttribute="bottom" constant="13" id="9gd-Sw-Csw"/>
                             <constraint firstItem="xu6-BC-z3n" firstAttribute="top" secondItem="8p1-9H-UcD" secondAttribute="top" id="UkB-tp-xGY"/>
-                            <constraint firstItem="Tow-7c-YJr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Yub-Vw-wtI"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qhu-cU-x7Q" secondAttribute="bottom" constant="13" id="dlf-5a-RlO"/>
-                            <constraint firstAttribute="trailing" secondItem="Tow-7c-YJr" secondAttribute="trailing" id="hsT-Ns-wHj"/>
-                            <constraint firstItem="Tow-7c-YJr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="nPz-NH-bmh"/>
-                            <constraint firstAttribute="trailing" secondItem="qhu-cU-x7Q" secondAttribute="trailing" constant="20" id="tAa-QL-SZb"/>
+                            <constraint firstItem="Tow-7c-YJr" firstAttribute="leading" secondItem="ABx-yW-SZI" secondAttribute="leading" id="Yub-Vw-wtI"/>
+                            <constraint firstItem="ABx-yW-SZI" firstAttribute="bottom" secondItem="qhu-cU-x7Q" secondAttribute="bottom" constant="13" id="dlf-5a-RlO"/>
+                            <constraint firstItem="ABx-yW-SZI" firstAttribute="trailing" secondItem="Tow-7c-YJr" secondAttribute="trailing" id="hsT-Ns-wHj"/>
+                            <constraint firstItem="Tow-7c-YJr" firstAttribute="top" secondItem="ABx-yW-SZI" secondAttribute="top" id="nPz-NH-bmh"/>
+                            <constraint firstItem="ABx-yW-SZI" firstAttribute="trailing" secondItem="qhu-cU-x7Q" secondAttribute="trailing" constant="20" id="tAa-QL-SZb"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="ABx-yW-SZI"/>
                     </view>
                     <navigationItem key="navigationItem" id="tca-48-he5"/>
                     <connections>
@@ -100,8 +102,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="38" height="38"/>
-        <image name="close" width="38" height="38"/>
-        <image name="refresh" width="38" height="38"/>
+        <image name="add" width="57" height="57"/>
+        <image name="close" width="57" height="57"/>
+        <image name="refresh" width="57" height="57"/>
     </resources>
 </document>

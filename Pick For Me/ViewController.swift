@@ -29,21 +29,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addItem() {
-        let alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .Default, handler: {(action: UIAlertAction) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .default, handler: {(action: UIAlertAction) in
             // get information from textfield
             let textfield = alertController.textFields![0] as UITextField
-            self.addOption(textfield.text!)
+            self.addOption(optionString: textfield.text!)
             
             // this is called when "Return" is pressed too so dismiss alert controller
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
         }))
         
-        alertController.addTextFieldWithConfigurationHandler(configurationTextField)
+        alertController.addTextField(configurationHandler: configurationTextField)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func configurationTextField(textField: UITextField!) {
@@ -51,24 +51,23 @@ class ViewController: UIViewController {
             textField.text = items[editingOptionRow]
         }
         
-        textField.returnKeyType = .Done
-        textField.autocapitalizationType = .Words
+        textField.returnKeyType = .done
+        textField.autocapitalizationType = .words
         textField.becomeFirstResponder()
     }
     
     @IBAction func removeAllItems() {
-        
-        var indexPaths = [NSIndexPath]()
+        var indexPaths = [IndexPath]()
 
         var count = 0
         while count < items.count {
-            let indexPath = NSIndexPath(forRow: count, inSection: 0)
+            let indexPath = IndexPath(row: count, section: 0)
             indexPaths.append(indexPath)
-            count++
+            count += 1
         }
         
-        items.removeAll(keepCapacity: true)
-        tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+        items.removeAll(keepingCapacity: true)
+        tableView.deleteRows(at: indexPaths, with: .fade)
     }
     
     @IBAction func pickRandomItem() {
@@ -78,7 +77,7 @@ class ViewController: UIViewController {
             let randomNumber = arc4random_uniform(UInt32(items.count)).hashValue
             let selectedOption = items[randomNumber]
             removeAllItems()
-            animationSelectedOptionOnScreen(selectedOption)
+            animationSelectedOptionOnScreen(selectedString: selectedOption)
         }
     }
     
@@ -86,12 +85,12 @@ class ViewController: UIViewController {
         selectedView = SelectedView(frame: CGRect(x: 0, y: view.frame.size.height / 2, width: view.frame.size.width, height: 60), labelString: selectedString)
         
         // add gesture recognizer to selected view
-        tapGesture.addTarget(self, action: "screenTapped")
+        tapGesture.addTarget(self, action: Selector("screenTapped"))
         view.addGestureRecognizer(tapGesture)
         view.addSubview(selectedView)
         
         // animate selection on screen
-        UIView.animateWithDuration(1.5, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.selectedView.alpha = 1.0
             var viewFrame = self.selectedView.frame
             viewFrame.origin.y /= 4
@@ -99,9 +98,9 @@ class ViewController: UIViewController {
         })
         
         // disable buttons
-        addButton.enabled = false
-        resetButton.enabled = false
-        selectButton.enabled = false
+        addButton.isEnabled = false
+        resetButton.isEnabled = false
+        selectButton.isEnabled = false
     }
     
     func screenTapped() {
@@ -109,7 +108,7 @@ class ViewController: UIViewController {
         view.removeGestureRecognizer(tapGesture)
     
         // now animate off screen
-        UIView.animateWithDuration(1.5, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.selectedView.alpha = 0
             var viewFrame = self.selectedView.frame
             viewFrame.origin.y *= 4
@@ -117,32 +116,31 @@ class ViewController: UIViewController {
         })
     
         // enable buttons
-        addButton.enabled = true
-        resetButton.enabled = true
-        selectButton.enabled = true
+        addButton.isEnabled = true
+        resetButton.isEnabled = true
+        selectButton.isEnabled = true
     }
     
     func addOption(optionString: String) {
         items.append(optionString)
         
         let row = items.count - 1
-        let indexPath = NSIndexPath(forRow: row, inSection: 0)
+        let indexPath = IndexPath(row: row, section: 0)
         
         if row % 2 == 0 {
             // even
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Right)
+            tableView.insertRows(at: [indexPath], with: .right)
         } else {
             // odd
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            tableView.insertRows(at: [indexPath], with: .left)
         }
     }
     
     func editOptionAtRow(row: NSInteger) {
         editingOption = true
-        var alertController = UIAlertController(title: NSLocalizedString("Edit Option", comment: ""), message: nil, preferredStyle: .Alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment:""), style: .Default, handler: {(action: UIAlertAction) in
+        let alertController = UIAlertController(title: NSLocalizedString("Edit Option", comment: ""), message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment:""), style: .default, handler: {(action: UIAlertAction) in
             // get information from textfield
             let textfield = alertController.textFields![0] as UITextField
             
@@ -150,22 +148,18 @@ class ViewController: UIViewController {
             self.tableView.reloadData()
             
             // this is called when "Return" is pressed too so dismiss alert controller
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+            alertController.dismiss(animated: true, completion: nil)
         }))
         
-        alertController.addTextFieldWithConfigurationHandler(configurationTextField)
+        alertController.addTextField(configurationHandler: configurationTextField)
         
         editingOption = false
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
     }
 }
 
@@ -173,20 +167,20 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier)! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellIdentifier)! as UITableViewCell
         cell.textLabel!.text = items[indexPath.row]
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.editOptionAtRow(indexPath.row)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.editOptionAtRow(row: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
