@@ -13,6 +13,8 @@
 		1F92FE221942386B009DAC70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92FE211942386B009DAC70 /* ViewController.swift */; };
 		1F92FE251942386B009DAC70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F92FE231942386B009DAC70 /* Main.storyboard */; };
 		1F92FE271942386B009DAC70 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F92FE261942386B009DAC70 /* Images.xcassets */; };
+		C1707BEE218402E900B293B9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1707BED218402E900B293B9 /* Theme.swift */; };
+		C19C9E4C218A42A10009F1DC /* KSAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C9E4B218A42A10009F1DC /* KSAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		1F92FE211942386B009DAC70 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F92FE241942386B009DAC70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F92FE261942386B009DAC70 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C1707BED218402E900B293B9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = Themes/Theme.swift; sourceTree = "<group>"; };
+		C19C9E4B218A42A10009F1DC /* KSAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KSAlertViewController.swift; path = "User Interface/Alert View/KSAlertViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +60,12 @@
 		1F92FE1C1942386B009DAC70 /* Pick For Me */ = {
 			isa = PBXGroup;
 			children = (
+				C1707BEA218402A200B293B9 /* Themes */,
+				C1707BE92183FF5000B293B9 /* User Interface */,
 				1F92FE1F1942386B009DAC70 /* AppDelegate.swift */,
-				1F92FE211942386B009DAC70 /* ViewController.swift */,
 				1F7774E519461AB3006789B6 /* SelectedView.swift */,
-				1F92FE231942386B009DAC70 /* Main.storyboard */,
-				1F92FE261942386B009DAC70 /* Images.xcassets */,
 				1F92FE1D1942386B009DAC70 /* Supporting Files */,
-				1F6A1A961C56DA28002058AE /* Launch Screen.storyboard */,
+				1F92FE211942386B009DAC70 /* ViewController.swift */,
 			);
 			path = "Pick For Me";
 			sourceTree = "<group>";
@@ -73,6 +76,33 @@
 				1F92FE1E1942386B009DAC70 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C1707BE92183FF5000B293B9 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C19C9E4A218A42530009F1DC /* Alert View */,
+				1F92FE231942386B009DAC70 /* Main.storyboard */,
+				1F6A1A961C56DA28002058AE /* Launch Screen.storyboard */,
+				1F92FE261942386B009DAC70 /* Images.xcassets */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		C1707BEA218402A200B293B9 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				C1707BED218402E900B293B9 /* Theme.swift */,
+			);
+			name = Themes;
+			sourceTree = "<group>";
+		};
+		C19C9E4A218A42530009F1DC /* Alert View */ = {
+			isa = PBXGroup;
+			children = (
+				C19C9E4B218A42A10009F1DC /* KSAlertViewController.swift */,
+			);
+			name = "Alert View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +179,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F92FE221942386B009DAC70 /* ViewController.swift in Sources */,
+				C1707BEE218402E900B293B9 /* Theme.swift in Sources */,
 				1F92FE201942386B009DAC70 /* AppDelegate.swift in Sources */,
 				1F7774E619461AB3006789B6 /* SelectedView.swift in Sources */,
+				C19C9E4C218A42A10009F1DC /* KSAlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

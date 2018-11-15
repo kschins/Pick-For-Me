@@ -9,41 +9,35 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var addButton: UIButton!
+    @IBOutlet private var resetButton: UIButton!
+    @IBOutlet private var selectButton: UIButton!
     
-    var items = [String]()
-    var editingOption = false
-    var editingOptionRow = 0;
-    var selectedView: SelectedView
-    let tapGesture = UITapGestureRecognizer()
-    let kCellIdentifier: String = "Cell"
+    private var items = [String]()
+    private var editingOption = false
+    private var editingOptionRow = 0
+    private var selectedView = SelectedView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), labelString: "")
+    private let tapGesture = UITapGestureRecognizer()
+    private let kCellIdentifier: String = "Cell"
     
-    required init?(coder aDecoder: NSCoder) {
-        selectedView = SelectedView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), labelString: "")
-        super.init(coder: aDecoder)
-    }
-    
-    @IBAction func addItem() {
-        let alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .default, handler: {(action: UIAlertAction) in
-            // get information from textfield
-            let textfield = alertController.textFields![0] as UITextField
-            self.addOption(optionString: textfield.text!)
-            
-            // this is called when "Return" is pressed too so dismiss alert controller
-            alertController.dismiss(animated: true, completion: nil)
-        }))
-        
-        alertController.addTextField(configurationHandler: configurationTextField)
-        
-        present(alertController, animated: true, completion: nil)
+    @IBAction private func addItem() {
+//        let alertController = UIAlertController(title: NSLocalizedString("Add Option", comment: ""), message: nil, preferredStyle: .alert)
+//        alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil))
+//        alertController.addAction(UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .default, handler: {(action: UIAlertAction) in
+//            // get information from textfield
+//            let textfield = alertController.textFields![0] as UITextField
+//            self.addOption(optionString: textfield.text!)
+//            
+//            // this is called when "Return" is pressed too so dismiss alert controller
+//            alertController.dismiss(animated: true, completion: nil)
+//        }))
+//        
+//        alertController.addTextField(configurationHandler: configurationTextField)
+//        
+//        present(alertController, animated: true, completion: nil)
     }
     
     func configurationTextField(textField: UITextField!) {
@@ -66,7 +60,7 @@ class ViewController: UIViewController {
             count += 1
         }
         
-        items.removeAll(keepingCapacity: true)
+        items.removeAll()
         tableView.deleteRows(at: indexPaths, with: .fade)
     }
     
@@ -74,7 +68,7 @@ class ViewController: UIViewController {
         let totalOptions = items.count
         
         if totalOptions > 0 {
-            let randomNumber = arc4random_uniform(UInt32(items.count)).hashValue
+            let randomNumber = Int.random(in: 0..<totalOptions)
             let selectedOption = items[randomNumber]
             removeAllItems()
             animationSelectedOptionOnScreen(selectedString: selectedOption)
@@ -85,7 +79,7 @@ class ViewController: UIViewController {
         selectedView = SelectedView(frame: CGRect(x: 0, y: view.frame.size.height / 2, width: view.frame.size.width, height: 60), labelString: selectedString)
         
         // add gesture recognizer to selected view
-        tapGesture.addTarget(self, action: Selector("screenTapped"))
+        tapGesture.addTarget(self, action: #selector(screenTapped))
         view.addGestureRecognizer(tapGesture)
         view.addSubview(selectedView)
         
@@ -103,7 +97,7 @@ class ViewController: UIViewController {
         selectButton.isEnabled = false
     }
     
-    func screenTapped() {
+    @objc func screenTapped() {
         // remove tap gesture and selection view
         view.removeGestureRecognizer(tapGesture)
     
